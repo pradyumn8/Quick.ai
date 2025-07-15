@@ -1,15 +1,13 @@
 import { Eraser, Sparkles } from 'lucide-react';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const RemoveBackground = () => {
   
-    const blogCategories = ['Technology', 'Health', 'Lifestyle', 'Travel', 'Food', 'Education'];
-  
-    const [selectedCategory, setSelectedCategory] = useState(blogCategories[0]);
     const [input, setInput] = useState('');
   
     const onSubmitHandler = (e) => {
       e.preventDefault();
+      // Add logic to handle image upload and background removal here
     }
 
   return (
@@ -21,9 +19,9 @@ const RemoveBackground = () => {
         <h1 className='text-xl font-semibold'>Background Removal</h1>
       </div>
         <p className='mt-6 text-sm font-medium'>Upload image</p>
-        <input onChange={(e)=>setInput(e.target.files[0])} type="file" accept='image/*' className='w-full h-10 px-3 mt-2 outline-none text-sm rounded-md border-gray-200 border-2' required />
+        <input onChange={(e)=>setInput(e.target.files[0])} type="file" accept='image/*' className='w-full p-1 mt-2 outline-none text-sm rounded-md border-gray-200 border-2' required />
 
-        <p className='text-xs text-gray-500 font-light mt-1'>Supports JPG, PNG, and other image formats</p>
+        <p className='text-xs text-gray-500 font-light mt-1 mb-4'>Supports JPG, PNG, and other image formats</p>
 
         <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#F6AB41] to-[#FF4938] text-white px-4 py-2 rounded-lg curspor-pointer hover:opacity-90 transition-all duration-200'>
           <Eraser className='w-5' />
@@ -39,7 +37,7 @@ const RemoveBackground = () => {
         <div className='flex-1 flex justify-center items-center'>
         <div className='text-sm flex flex-col items-center gap-5 text-gray-400'>
         <Eraser className='w-9 h-9' />
-        <p>Enter a topic and click "Remove Background" to get started</p>
+        <p>Upload an image and click "Remove Background" to get started</p>
         </div>
         </div>
       </div>

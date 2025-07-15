@@ -22,7 +22,7 @@ const GenerateImages = () => {
         <h1 className='text-xl font-semibold'>AI Title Generation</h1>
       </div>
         <p className='mt-6 text-sm font-medium'>Describe Your Image</p>
-        <textarea onChange={(e)=>setInput(e.target.value)} value={input} rows={4} className='w-full h-10 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='Describe what you want to see in the image...'/>
+        <textarea onChange={(e)=>setInput(e.target.value)} value={input} rows={4} cols={4} className='w-full h-10 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='Describe what you want to see in the image...'/>
 
         <p className='mt-4 text-sm font-medium'>Style</p>
 
