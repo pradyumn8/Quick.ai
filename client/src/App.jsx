@@ -9,8 +9,16 @@ import ReviewResume from './pages/ReviewResume'
 import RemoveBackground from './pages/RemoveBackground'
 import RemoveObject from './pages/RemoveObject'
 import GenerateImages from './pages/GenerateImages'
+import { useEffect } from 'react'
+import { useAuth } from '@clerk/clerk-react'
 
 function App() {
+
+  const {getToken} = useAuth  ()
+  useEffect(()=>{
+    getToken().then((token)=>console.log(token));
+  },[])
+
   return (
     <Routes>
       {/* Public landing page */}
