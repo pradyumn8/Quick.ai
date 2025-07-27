@@ -11,6 +11,7 @@ import RemoveObject from './pages/RemoveObject'
 import GenerateImages from './pages/GenerateImages'
 import { useEffect } from 'react'
 import { useAuth } from '@clerk/clerk-react'
+import {Toaster} from 'react-hot-toast'
 
 function App() {
 
@@ -20,26 +21,28 @@ function App() {
   },[])
 
   return (
-    <Routes>
-      {/* Public landing page */}
-      <Route path="/" element={<Home />} />
-      {/* last time due to this issue i was getting a lots of errors */}
-      {/* <Route path='/ai' element={<Layout />} /> */}
+    <>
+    <Toaster/>
+      <Routes>
+        {/* Public landing page */}
+        <Route path="/" element={<Home />} />
+        {/* last time due to this issue i was getting a lots of errors */}  
+        {/* <Route path='/ai' element={<Layout />} /> */}
       
-      <Route path="/ai" element={<Layout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="write-article" element={<WriteArticle />} />
-        <Route path="blog-titles" element={<BlogTitles />} />
-        <Route path="community" element={<Community />} />
-        <Route path="review-resume" element={<ReviewResume />} />
-        <Route path="remove-background" element={<RemoveBackground />} />
-        <Route path="remove-object" element={<RemoveObject />} />
-        <Route path="generate-images" element={<GenerateImages />} />
-      </Route>
-
-      {/* Fallback */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="/ai" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="write-article" element={<WriteArticle />} />
+          <Route path="blog-titles" element={<BlogTitles />} />
+          <Route path="community" element={<Community />} />
+          <Route path="review-resume" element={<ReviewResume />} />
+          <Route path="remove-background" element={<RemoveBackground />} />
+          <Route path="remove-object" element={<RemoveObject />} />
+          <Route path="generate-images" element={<GenerateImages />} />
+        </Route>
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ export const getUserCreations = async (req, res) => {
     try {
         const { userId } = req.auth()
 
-        await sql`Select * from creations where user_id = ${userId} order by created_at desc`;
+        const creations = await sql`Select * from creations where user_id = ${userId} order by created_at desc`;
         res.json({ success: true, creations })
     } catch (error) {
         res.json({ success: false, message: error.message })
@@ -32,21 +32,21 @@ export const toggleLikeCreation = async (req, res) => {
         }
 
         const currentLikes = creation.likes;
-        const userIStr = userId.toString();
+        const userIdStr = userId.toString();
         let updatedLikes;
         let message;
-        if(currentLikes.includes(userIStr)){
-            updatedLikes = currentLikes.filter((like) => like !== userIStr);
+        if(currentLikes.includes(userIdStr)){
+            updatedLikes = currentLikes.filter((user) => user !== userIdStr);
             message = 'Creation unliked';
         }else{
-            updatedLikes = [...currentLikes, userIStr];
+            updatedLikes = [...currentLikes, userIdStr];
             message = 'Creation liked';
         }
 
         const formattedArray = `{${updatedLikes.join(', ')}}`;
 
         await sql`Update creations set likes = ${formattedArray}::text[] where id = ${id}`;
-        res.json({ success: true, message})
+        res.json({ success: true, message});
 
     } catch (error) {
         res.json({ success: false, message: error.message })
